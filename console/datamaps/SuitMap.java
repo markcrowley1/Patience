@@ -1,8 +1,8 @@
 
-package console;
+package console.datamaps;
 
 import java.util.HashMap;
-import game.enums.*;
+import game.cards.enums.*;
 
 public class SuitMap{
     private HashMap<Suits, Character> map;
@@ -10,10 +10,10 @@ public class SuitMap{
     public SuitMap(){
         this.map = new HashMap<Suits, Character>();
 
-        map.put(Suits.HEART, '\u2665');
-        map.put(Suits.DIAMOND, '\u2666');
-        map.put(Suits.CLUB, '\u2663');
-        map.put(Suits.SPADE, '\u2660');
+        map.put(Suits.HEART, 'H');
+        map.put(Suits.DIAMOND, 'D');
+        map.put(Suits.CLUB, 'C');
+        map.put(Suits.SPADE, 'S');
     }
 
     public char getSymbol(Suits suit){

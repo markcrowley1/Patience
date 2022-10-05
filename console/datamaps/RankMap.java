@@ -1,8 +1,8 @@
 
-package console;
+package console.datamaps;
 
 import java.util.HashMap;
-import game.enums.*;
+import game.cards.enums.*;
 
 public class RankMap{
     private HashMap<Ranks, String> map;

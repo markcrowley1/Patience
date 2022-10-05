@@ -1,9 +1,9 @@
-package game;
+package game.cards;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import game.enums.*;
+import game.cards.enums.*;
 
 public class Deck{
     private ArrayList<Card> cards;

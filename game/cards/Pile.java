@@ -1,8 +1,8 @@
-package game;
+package game.cards;
 
 import java.util.ArrayList;
 
-import game.enums.*;
+import game.cards.enums.*;
 
 public class Pile{
     private ArrayList<Card> cards;
@@ -30,15 +30,24 @@ public class Pile{
         cards.add(card);
     }
 
+    /*Add card face up to pile */
+    public void addVisibleCard(Card card){
+        cards.add(card);
+        visibleCards.add(card);
+    }
+
     /*Remove the top card of the pile. */
     public Card removeCard(){
         Card card = cards.remove(cards.size() - 1);
+        visibleCards.remove(visibleCards.size() - 1);
         return card;
     }
 
     /*Turn up the card on top of the pile. */
     public void flipCard(){
-        visibleCards.add(cards.get(cards.size() - 1));
+        if(cards.size() > 0){
+            visibleCards.add(cards.get(cards.size() - 1));
+        }
     }
 
     /*Check if pile is foundation pile */
@@ -60,5 +69,13 @@ public class Pile{
 
     public ArrayList<Card> getVisibleCards(){
         return visibleCards;
+    }
+
+    public Card getVisibleCard(int index){
+        return visibleCards.get(index);
+    }
+
+    public Card getTopCard(){
+        return cards.get(cards.size() - 1);
     }
 }

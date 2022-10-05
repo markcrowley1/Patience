@@ -1,5 +1,5 @@
 
-package console;
+package console.datamaps;
 
 public enum Command{
     QUIT,

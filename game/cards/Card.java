@@ -1,7 +1,7 @@
 
-package game;
+package game.cards;
 
-import game.enums.*;
+import game.cards.enums.*;
 
 public class Card{
     private Ranks rank;

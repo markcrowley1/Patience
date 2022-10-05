@@ -2,14 +2,18 @@
 package console;
 
 import java.util.Scanner;
+
+import console.datamaps.Command;
+
 import java.lang.String;
 
 public class ConsoleReader{
     private Scanner scanner;
     private String userInput;
     private Command inputType;
-    private int labelA;
-    private int labelB;
+    private char labelA;
+    private char labelB;
+    private String validLabels = "1234567dhcsp";
 
     public ConsoleReader(){
         // Create scanner object for user input
@@ -17,7 +21,9 @@ public class ConsoleReader{
     }
 
     public void readUserInput(){
+        System.out.print("\n-->");
         userInput = scanner.nextLine().toLowerCase();
+        System.out.print('\n');
 
         if(userInput.equals("q")){
             inputType = Command.QUIT;
@@ -25,23 +31,15 @@ public class ConsoleReader{
         else if(userInput.equals("d")){
             inputType = Command.DRAW;
         }
-        else if(userInput.length() > 1){
+        else if(userInput.length() == 3){
             // Get first and last characters in string
             char charA = userInput.charAt(0);
             char charB = userInput.charAt(userInput.length() - 1);
 
-            if(Character.isDigit(charA) && Character.isDigit(charB)){
-                int intA = charA - '0';
-                int intB = charB - '0';
-
-                if((0 < intA && intA < 8) && (0 < intB && intB < 8) && intA != intB){
-                    labelA = intA;
-                    labelB = intB;
-                    inputType = Command.MOVE;
-                }
-                else{
-                    inputType = Command.ERROR;
-                }
+            if(validLabels.indexOf(charA) != -1 && validLabels.indexOf(charB) != -1){
+                labelA = charA;
+                labelB = charB;
+                inputType = Command.MOVE;
             }
             else{
                 inputType = Command.ERROR;
@@ -56,11 +54,11 @@ public class ConsoleReader{
         return inputType;
     }
 
-    public int getLabelA(){
+    public char getLabelA(){
         return labelA;
     }
 
-    public int getLabelB(){
+    public char getLabelB(){
         return labelB;
     }
 
