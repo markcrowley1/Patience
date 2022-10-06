@@ -52,8 +52,10 @@ public class GameState{
     }
 
     public void drawCard(){
-        Card card = deck.drawCard();
-        drawnPile.addVisibleCard(card);
+        if(deck.getDeckSize() > 0){
+            Card card = deck.drawCard();
+            drawnPile.addVisibleCard(card);
+        }
     }
 
     public Pile getPileFromLabel(char label){
@@ -145,7 +147,7 @@ public class GameState{
             rankA = cardA.getRank();
 
             if(pileB.isFoundationPile() == true){
-                suitA = pileB.getRequiredSuit();
+                suitA = cardA.getSuit();
                 if(suitA == suitB && rankA.ordinal() - rankB.ordinal() == 1){
                     validMove = pileA.getVisibleCardCount() - 1;
                 }

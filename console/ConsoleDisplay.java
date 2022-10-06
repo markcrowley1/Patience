@@ -79,7 +79,7 @@ public class ConsoleDisplay{
         // Represent number of faced down cards in pile
         for(Pile pile: randomPiles){
             faceDownCardCount = pile.getPileSize() - pile.getVisibleCardCount();
-            System.out.printf("P %d\t", faceDownCardCount);
+            System.out.printf("X %d\t", faceDownCardCount);
 
             maxVisibleCardCount = Math.max(maxVisibleCardCount, pile.getVisibleCardCount());
         }
