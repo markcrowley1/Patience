@@ -87,11 +87,6 @@ public class GameState{
             return validMove;
         }
 
-        // Cannot move cards already placed in foundation piles
-        if(pileA.isFoundationPile() == true){
-            return validMove;
-        }
-
         // Cannot move card to pile of cards drawn from deck
         if(labelB == 'p'){
             return validMove;
@@ -108,7 +103,7 @@ public class GameState{
                     validMove = pileA.getVisibleCardCount() - 1;
                 }
             }
-            else{
+            else if(Character.isDigit(labelA)){
                 // Get bottom card
                 Card card = pileA.getVisibleCard(0);
                 Ranks rank = card.getRank();
@@ -117,7 +112,16 @@ public class GameState{
                     // Move all visible cards if moving from one lane to another
                     validMove = 0;
                 }
-                
+            }
+            else if(labelA == 'p'){
+                // Get bottom card
+                Card card = pileA.getTopCard();
+                Ranks rank = card.getRank();
+                // Card placed on empty foundation pile must be ace of matching suit
+                if(rank == Ranks.KING){
+                    // Move all visible cards if moving from one lane to another
+                    validMove = pileA.getVisibleCardCount() - 1;
+                }
             }
 
             return validMove;
@@ -135,7 +139,7 @@ public class GameState{
         Suits suitA;
 
         // Only valid to move top card from uncovered pile
-        if(labelA == 'p'){
+        if(labelA == 'p' || pileA.isFoundationPile() == true){
             Card cardA = pileA.getTopCard();
             colorA = cardA.getColor();
             rankA = cardA.getRank();
