@@ -99,19 +99,25 @@ public class GameState{
 
         // Unique rules apply if destination piles are empty
         if(pileB.getPileSize() == 0){
-            Card card = pileA.getTopCard();
-            Ranks rank = card.getRank();
-            Suits suit = card.getSuit();
             if(pileB.isFoundationPile() == true){
-                
+                Card card = pileA.getTopCard();
+                Ranks rank = card.getRank();
+                Suits suit = card.getSuit();
                 // Card placed on empty foundation pile must be ace of matching suit
                 if(suit == pileB.getRequiredSuit() && rank == Ranks.ACE){
                     validMove = pileA.getVisibleCardCount() - 1;
                 }
             }
-            else if(rank == Ranks.KING){
-                // Move all visible cards if moving from one lane to another
-                validMove = 0;
+            else{
+                // Get bottom card
+                Card card = pileA.getVisibleCard(0);
+                Ranks rank = card.getRank();
+                // Card placed on empty foundation pile must be ace of matching suit
+                if(rank == Ranks.KING){
+                    // Move all visible cards if moving from one lane to another
+                    validMove = 0;
+                }
+                
             }
 
             return validMove;
