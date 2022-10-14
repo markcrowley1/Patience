@@ -8,6 +8,9 @@ import game.cards.Deck;
 import game.cards.Pile;
 import game.cards.enums.*;
 
+/**
+ * This class handles move logic and keeps track of card locations.
+ */
 public class GameState{
     // Data structures for cards
     private Deck deck;
