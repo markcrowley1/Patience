@@ -76,6 +76,7 @@ public class Patience{
                     // Check if user won the game with last move
                     if(gameState.isGameWon() == true){
                         gameState.setGameOver(true);
+                        System.out.println("Winner!");
                     }
 
                     break;
