@@ -1,2 +1,2 @@
 # Patience
-Java implementation of solitaire/patience for college module.
+Java implementation of Patience/Solitaire played in terminal.
